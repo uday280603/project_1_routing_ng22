@@ -9,6 +9,6 @@ import { Navbar } from './shared/component/navbar/navbar';
   templateUrl: './app.html',
 })
 export class App {
-  //////
+  
  
 }
