@@ -1,0 +1,10 @@
+<mat-card>
+    <mat-card-content>
+        <p class="alert alert-info text-center">{{message}}</p>
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-between">
+        
+        <button mat-raised-button (click)="onClose(false)">No</button>
+        <button mat-raised-button (click)="onClose(true)">Yes</button>
+    </mat-card-actions>
+</mat-card>

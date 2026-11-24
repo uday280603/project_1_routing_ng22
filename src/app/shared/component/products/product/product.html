@@ -1,0 +1,39 @@
+@if (getProduct(); as product) {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{ product.productName }}
+      </mat-card-title>
+    </mat-card-header>
+
+    <img
+      mat-card-image
+      [src]="product.productImage"
+      [alt]="product.productName"
+    />
+
+    <mat-card-content>
+      <p class="m-0">Brand: {{ product.productBrand }}</p>
+      <p class="m-0">Category: {{ product.productCategory }}</p>
+      <p class="m-0">Price: ₹{{ product.productPrice }}</p>
+      <p class="m-0">Available: {{ product.isAvaible ? 'Yes' : 'No' }}</p>
+      <p class="m-0">Status: {{ product.productStatus }}</p>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="d-flex justify-content-between">
+      <button mat-raised-button routerLink="updateProduct">Edit</button>
+      <button
+        mat-raised-button
+        (click)="onRemoveProduct(product.productId)"
+      >
+        Remove
+      </button>
+    </mat-card-actions>
+  </mat-card>
+} @else {
+  <p class="alert alert-danger text-center">
+    NO DATA FOUND..!
+  </p>
+}

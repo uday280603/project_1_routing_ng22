@@ -1,0 +1,77 @@
+<mat-card>
+  <mat-card-content>
+    <form (submit)="onAddProduct($event)">
+      <mat-form-field class="w-100">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput [formField]="productForm.productName" />
+        @if(productForm.productName().touched() && productForm.productName().invalid()){
+          @for(error of productForm.productName().errors() ; track error){
+            <strong class="text-danger">{{error.message}}</strong>
+          }
+        }
+         @if(productForm.productName().dirty() && productForm.productName().invalid()){
+          @for(error of productForm.productName().errors() ; track error){
+            <strong class="text-danger">{{error.message}}</strong>
+          }
+        }
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Image Url</mat-label>
+        <input type="text" matInput [formField]="productForm.productImage" />
+        @if(productForm.productImage().touched() && productForm.productImage().invalid()){
+          @for(error of productForm.productImage().errors(); track error){
+            <strong class="text-danger">{{error.message}}</strong>
+          }
+        }
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Brand</mat-label>
+        <input type="text" matInput [formField]="productForm.productBrand" />
+          @if(productForm.productBrand().touched() && productForm.productBrand().invalid()){
+          @for(error of productForm.productBrand().errors(); track error){
+            <strong class="text-danger">{{error.message}}</strong>
+          }
+        }
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Category</mat-label>
+        <mat-select matInput [formField]="productForm.productCategory">
+          <mat-option value="FOOD">FOOD</mat-option>
+          <mat-option value="COSMATIC">COSMATIC</mat-option>
+          <mat-option value="MEDICAL">MEDICAL</mat-option>
+          <mat-option value="OTHERS">OTHERS</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Price</mat-label>
+        <input type="text" matInput [formField]="productForm.productPrice" />
+           @if(productForm.productPrice().touched() && productForm.productPrice().invalid()){
+          @for(error of productForm.productPrice().errors(); track error){
+            <strong class="text-danger">{{error.message}}</strong>
+          }
+        }
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Status</mat-label>
+        <mat-select matInput [formField]="productForm.productStatus">
+          <mat-option value="ORDERED">ORDERED</mat-option>
+          <mat-option value="DIS-PATCH">DIS-PATCH</mat-option>
+          <mat-option value="SHIPPED">SHIPPED</mat-option>
+          <mat-option value="DELIVERED">DELIVERED</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Is Avaible</mat-label>
+        <mat-select matInput [formField]="productForm.isAvaible">
+          <mat-option [value]="true">Yes</mat-option>
+          <mat-option [value]="false">NO</mat-option>
+        </mat-select>
+      </mat-form-field>
+      @if (!isInEditMode) {
+        <button mat-raised-button class="w-100" type="submit">Add Product</button>
+      } @else {
+        <button mat-raised-button class="w-100" type="button" (click)="updateProduct()">Update Product</button>
+      }
+    </form>
+  </mat-card-content>
+</mat-card>

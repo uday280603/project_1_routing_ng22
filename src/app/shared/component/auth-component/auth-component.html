@@ -1,0 +1,53 @@
+<mat-card class="col-md-6 offset-md-3 mt-5">
+  @if (isAllReadyHaveAccount) {
+    <mat-card-content>
+      <form (submit)="onLogin($event)">
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formField]="loginForm.email" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput [formField]="loginForm.password" />
+        </mat-form-field>
+
+        <button type="submit" class="w-100" mat-raised-button>Login</button>
+      </form>
+      <a href="javascript:;" (click)="isAllReadyHaveAccount = false"
+        >dont't have account ? Sign In.</a
+      >
+    </mat-card-content>
+  }
+
+  @if (!isAllReadyHaveAccount) {
+    <mat-card-content>
+      <form (submit)="onSignUp($event)">
+        <mat-form-field class="w-100">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput [formField]="signInForm.name" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formField]="signInForm.email" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-select matInput [formField]="signInForm.userRole">
+            <mat-option value="buyer">BUYER</mat-option>
+            <mat-option value="admin">ADMIN</mat-option>
+            <mat-option value="superAdmin">SUPERADMIN</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput [formField]="signInForm.password" />
+        </mat-form-field>
+
+        <button type="submit" class="w-100" mat-raised-button>Sign In</button>
+      </form>
+      <a href="javascript:;" (click)="isAllReadyHaveAccount = true"
+        >allready have account ? Log In.</a
+      >
+    </mat-card-content>
+  }
+</mat-card>
