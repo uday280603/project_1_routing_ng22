@@ -8,6 +8,9 @@ import { ProductForm } from './shared/component/products/product-form/product-fo
 import { AuthComponent } from './shared/component/auth-component/auth-component';
 import { authGuard } from './shared/guard/auth-guard';
 import { roleBaseAccessControlGuard } from './shared/guard/role-base-access-control-guard';
+import { Profile } from './shared/component/profile/profile';
+
+
 
 export const routes: Routes = [
   {
@@ -28,7 +31,7 @@ export const routes: Routes = [
     component: ProductDashboard,
     canActivate: [authGuard, roleBaseAccessControlGuard],
     data: {
-      roles: ['admin', 'buyer'],
+      roles: ['admin', 'buyer','superAdmin'],
     },
     children: [
       {
@@ -56,4 +59,8 @@ export const routes: Routes = [
     path: 'about',
     component: About,
   },
+   {
+    path :'profile',
+    component : Profile
+   }
 ];
